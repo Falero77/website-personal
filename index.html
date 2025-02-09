@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            overflow: hidden;
+        }
+        .birthday-card {
+            background-color: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 80%;
+            position: relative;
+            overflow: hidden;
+        }
+        .cover {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ff6b6b;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: transform 0.5s ease-in-out;
+        }
+        .cover.open {
+            transform: translateY(-100%);
+        }
+        .cover h2 {
+            color: white;
+            font-size: 2rem;
+            margin: 0;
+        }
+        h1 {
+            color: #ff6b6b;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+            transition-delay: 0.3s;
+        }
+        p {
+            color: #2f3542;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+            transition-delay: 0.5s;
+        }
+        .cake {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: opacity 0.5s, transform 0.5s;
+            transition-delay: 0.7s;
+        }
+        .open ~ h1,
+        .open ~ p,
+        .open ~ .cake {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .balloon {
+            font-size: 2rem;
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        .open ~ .balloon {
+            opacity: 1;
+            animation: float 6s ease-in-out infinite;
+        }
+        .balloon:nth-child(3) { left: 10%; animation-delay: -1s; transition-delay: 0.9s; }
+        .balloon:nth-child(4) { right: 10%; animation-delay: -2s; transition-delay: 1.1s; }
+        .balloon:nth-child(5) { left: 20%; top: 20%; animation-delay: -3s; transition-delay: 1.3s; }
+        .balloon:nth-child(6) { right: 20%; top: 30%; animation-delay: -4s; transition-delay: 1.5s; }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+    </style>
+</head>
+<body>
+    <div class="birthday-card">
+        <div class="cover" onclick="openCard()">
+            <h2>Click to Open</h2>
+        </div>
+        <h1>Happy Birthday!</h1>
+        <div class="cake">🎉🎂🍰🎉</div>
+        <p>Wishing you a day filled with happiness and a year filled with joy!</p>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+        <div class="balloon">🎈</div>
+    </div>
+
+    <script>
+        function openCard() {
+            document.querySelector('.cover').classList.add('open');
+        }
+    </script>
+</body>
+</html>
